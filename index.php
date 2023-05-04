@@ -1,26 +1,31 @@
-<?php 
+<?php   
 
-    class Movie {
-        public $title;
-        public $genre;
+    require __DIR__ . '/models/Genre.php';
+    require __DIR__ . '/models/Movie.php';
 
-        public function __construct($title, $genre) {
-            $this->title = $title;
-            $this->genre = $genre;
-        }
 
-        public function getMovieDetails() {
-            return $this->title . ' ' . $this->genre;
-        }
-    }
+    $potterGenres = [
+        new Genre('fantasy'),
+        new Genre('action')
+    ];
 
-    $potter = new Movie('harry potter', 'fantasy');
+    $bourneGenres = [
+        new Genre('thriller'),
+        new Genre('action')
+    ];
+
+    $potter = new Movie('harry potter', $potterGenres);
     var_dump($potter);
     echo '<br>';
-    $bourne = new Movie('jason bourn', 'action');
-    var_dump($potter);
+    $bourne = new Movie('jason bourn', $bourneGenres);
+    var_dump($bourne);
     echo '<br>';
-    echo $potter->getMovieDetails();
+    echo $potter->getMovieTitle();
     echo '<br>';
-    echo $bourne->getMovieDetails();
+    echo $potter->getMovieGenres();
+    echo '<br>';
+    echo $bourne->getMovieTitle();
+    echo '<br>';
+    echo $bourne->getMovieGenres();
+    echo '<br>';
 ?>
